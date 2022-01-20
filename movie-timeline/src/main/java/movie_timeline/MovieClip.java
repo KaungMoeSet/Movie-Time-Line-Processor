@@ -2,11 +2,11 @@ package movie_timeline;
 
 public class MovieClip {
 
-	int totalSeconds; //total duration in sec
-	int offset; //start offset in sec
-	int hours, minutes, seconds; //for duration 
-	TimeStamp startTimeStamp, endTimeStamp; // actual time stamp
-	TimeStampSpecifier specifer;
+	private int totalSeconds; //total duration in sec
+	private int offset; //start offset in sec
+	private int hours, minutes, seconds; //for duration 
+	private TimeStamp startTimeStamp, endTimeStamp; // actual time stamp
+	private TimeStampSpecifier specifer;
 	
 	
 	public MovieClip(int hours, int minutes, int seconds, TimeStampSpecifier specifer) {
@@ -43,5 +43,23 @@ public class MovieClip {
 	public MovieClip setOffset(int offset) {
 		this.offset = offset;
 		return this;
+	}
+	
+	public int getTotalSeconds() {
+		return totalSeconds;
+	}
+	
+	public TimeStamp getStartTimeStamp() {
+		if(startTimeStamp==null)
+			startTimeStamp = new TimeStamp(offset);
+		
+		return startTimeStamp;
+	}
+	
+	public TimeStamp getEndTimeStamp() {
+		if(endTimeStamp==null)
+			endTimeStamp = new TimeStamp(offset+getTotalSeconds());
+		
+		return endTimeStamp;
 	}
 }
