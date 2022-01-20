@@ -22,4 +22,21 @@ public class MovieClip {
 	public MovieClip(int hours, int minutes, int seconds) {
 		this(hours, minutes, seconds, TimeStampSpecifier.DURATION);
 	}
+
+	public TimeStampSpecifier getSpecifer() {
+		return specifer;
+	}
+
+	public MovieClip setTimpeStampSpecifier(TimeStampSpecifier specifer) {
+		this.specifer = specifer;
+		return this;
+	}
+	
+	public MovieClip setTotalSeconds(int totalSeconds) {
+		this.totalSeconds = totalSeconds;
+		hours = totalSeconds/3600;
+		minutes = (totalSeconds - hours*3600)/60;
+		seconds = totalSeconds - hours*3600 - minutes*60;
+		return this;
+	}
 }
