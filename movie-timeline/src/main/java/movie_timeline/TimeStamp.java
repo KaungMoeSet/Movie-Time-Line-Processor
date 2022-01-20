@@ -19,7 +19,7 @@ public class TimeStamp {
 
 	@Override
 	public String toString() {
-		return String.format("%s: %s: %s", hours, minutes, seconds);
+		return String.format("%s: %s: %s", Utils.toDoubleDigits(hours), Utils.toDoubleDigits(minutes), Utils.toDoubleDigits(seconds));
 	}
 	
 	public static void main(String[] args) {
