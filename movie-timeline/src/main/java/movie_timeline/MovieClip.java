@@ -2,6 +2,7 @@ package movie_timeline;
 
 public class MovieClip {
 
+	String name;
 	private int totalSeconds; //total duration in sec
 	private int offset; //start offset in sec
 	private int hours, minutes, seconds; //for duration 
@@ -9,8 +10,9 @@ public class MovieClip {
 	private TimeStampSpecifier specifer;
 	
 	
-	public MovieClip(int hours, int minutes, int seconds, TimeStampSpecifier specifer) {
+	public MovieClip(String name, int hours, int minutes, int seconds, TimeStampSpecifier specifer) {
 		super();
+		this.name = name;
 		this.hours = hours;
 		this.minutes = minutes;
 		this.seconds = seconds;
@@ -19,8 +21,8 @@ public class MovieClip {
 		this.specifer = specifer;
 	}
 	
-	public MovieClip(int hours, int minutes, int seconds) {
-		this(hours, minutes, seconds, TimeStampSpecifier.DURATION);
+	public MovieClip(String name, int hours, int minutes, int seconds) {
+		this(name, hours, minutes, seconds, TimeStampSpecifier.DURATION);
 	}
 
 	public TimeStampSpecifier getSpecifer() {
