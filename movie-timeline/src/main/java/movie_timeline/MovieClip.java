@@ -19,5 +19,7 @@ public class MovieClip {
 		this.specifer = specifer;
 	}
 	
-	
+	public MovieClip(int hours, int minutes, int seconds) {
+		this(hours, minutes, seconds, TimeStampSpecifier.DURATION);
+	}
 }
