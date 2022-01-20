@@ -39,4 +39,9 @@ public class MovieClip {
 		seconds = totalSeconds - hours*3600 - minutes*60;
 		return this;
 	}
+	
+	public MovieClip setOffset(int offset) {
+		this.offset = offset;
+		return this;
+	}
 }
