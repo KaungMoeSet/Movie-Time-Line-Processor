@@ -52,16 +52,12 @@ public class MovieClip {
 	}
 	
 	public TimeStamp getStartTimeStamp() {
-		if(startTimeStamp==null)
-			startTimeStamp = new TimeStamp(offset);
-		
+		startTimeStamp = new TimeStamp(offset);		
 		return startTimeStamp;
 	}
 	
 	public TimeStamp getEndTimeStamp() {
-		if(endTimeStamp==null)
-			endTimeStamp = new TimeStamp(offset+getTotalSeconds());
-		
+		endTimeStamp = new TimeStamp(offset+getTotalSeconds());		
 		return endTimeStamp;
 	}
 
@@ -82,7 +78,7 @@ public class MovieClip {
 	}
 	
 	public static void main(String[] args) {
-		MovieClip mc = new MovieClip("Venom", 3, 10, 56);
+		MovieClip mc = new MovieClip("Venom", 3, 45, 56);
 		System.out.println(mc);
 	}
 }
