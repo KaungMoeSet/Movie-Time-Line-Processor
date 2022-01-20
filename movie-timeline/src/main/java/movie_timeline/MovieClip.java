@@ -64,4 +64,25 @@ public class MovieClip {
 		
 		return endTimeStamp;
 	}
+
+	@Override
+	public String toString() {
+		String str;
+		switch (specifer) {
+		case START_TIME:
+			str = "%s %s".formatted(getStartTimeStamp(), name);
+			break;
+		case END_TIME:
+			str = "%s %s".formatted(getEndTimeStamp(), name);
+		default:
+			str = "%s %s".formatted(new TimeStamp(getTotalSeconds()), name);
+			break;
+		}
+		return str;
+	}
+	
+	public static void main(String[] args) {
+		MovieClip mc = new MovieClip("Venom", 3, 10, 56);
+		System.out.println(mc);
+	}
 }
