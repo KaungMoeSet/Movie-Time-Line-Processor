@@ -101,7 +101,8 @@ public class MovieClip {
 	}
 	
 	public static void main(String[] args) {
-		MovieClip mc = new MovieClip("Venom", 3, 45, 56);
-		System.out.println(mc);
+		
+		MovieClip c1 = MovieClip.parseString("3:79:88 Avengeres    ");
+		System.out.println(c1);
 	}
 }
