@@ -4,7 +4,7 @@ public class MovieClip {
 
 	String name;
 	private int totalSeconds; //total duration in sec
-	private int offset; //start offset in sec
+	private int offsetSeconds; //start offset in sec
 	private int hours, minutes, seconds; //for duration 
 	private TimeStamp startTimeStamp, endTimeStamp; // actual time stamp
 	private TimeStampSpecifier specifer;
@@ -17,7 +17,7 @@ public class MovieClip {
 		this.minutes = minutes;
 		this.seconds = seconds;
 		this.totalSeconds = hours*3600 + minutes*60 + seconds;
-		this.offset = 0;
+		this.offsetSeconds = 0;
 		this.specifer = specifer;
 	}
 	
@@ -43,7 +43,9 @@ public class MovieClip {
 	}
 	
 	public MovieClip setOffset(int offset) {
-		this.offset = offset;
+		this.offsetSeconds = offset;	
+		startTimeStamp = new TimeStamp(offsetSeconds);
+		endTimeStamp = new TimeStamp(offsetSeconds+getTotalSeconds());
 		return this;
 	}
 	
@@ -52,12 +54,14 @@ public class MovieClip {
 	}
 	
 	public TimeStamp getStartTimeStamp() {
-		startTimeStamp = new TimeStamp(offset);		
+		if(startTimeStamp==null)
+			startTimeStamp = new TimeStamp(offsetSeconds);		
 		return startTimeStamp;
 	}
 	
 	public TimeStamp getEndTimeStamp() {
-		endTimeStamp = new TimeStamp(offset+getTotalSeconds());		
+		if(endTimeStamp==null)
+			endTimeStamp = new TimeStamp(offsetSeconds+getTotalSeconds());		
 		return endTimeStamp;
 	}
 
@@ -75,6 +79,25 @@ public class MovieClip {
 			break;
 		}
 		return str;
+	}
+	
+	//create parsestring for the string format: "    HHH:MM:SS     name  "
+	public static MovieClip parseString(String str) {
+		String temp = str.trim();
+		int index=0;
+		for(int i=0; i<str.length(); i++) {
+			if(temp.charAt(i)==' ') {
+				index = i;
+				break;
+			}			
+		}
+		
+		//split time and name
+		String timeStampStr = temp.substring(0, index);
+		String[] args = timeStampStr.split(":");
+		String name = temp.substring(index).trim();
+		
+		return new MovieClip(name, Integer.parseInt(args[0]), Integer.parseInt(args[1]), Integer.parseInt(args[2]));
 	}
 	
 	public static void main(String[] args) {
