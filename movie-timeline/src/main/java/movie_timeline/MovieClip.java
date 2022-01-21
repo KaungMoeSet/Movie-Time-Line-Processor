@@ -98,7 +98,7 @@ public class MovieClip {
 		String name = temp.substring(index).trim();
 		
 		return new MovieClip(name, Integer.parseInt(args[0]), Integer.parseInt(args[1]), Integer.parseInt(args[2]));
-	}
+	} // can use for initialize cause return is MovieClip obj 
 	
 	public static void main(String[] args) {
 		
