@@ -82,16 +82,19 @@ public class MovieClip {
 	}
 	
 	//create parsestring for the string format: "    HHH:MM:SS     name  "
+	//this has to input the duration format
 	public static MovieClip parseString(String str) {
 		String temp = str.trim();
-		int index=0;
+/*		int index=0;
 		for(int i=0; i<str.length(); i++) {
 			if(temp.charAt(i)==' ') {
 				index = i;
 				break;
 			}			
 		}
+		*/
 		
+		int index = temp.indexOf(' ');
 		//split time and name
 		String timeStampStr = temp.substring(0, index);
 		String[] args = timeStampStr.split(":");
@@ -102,7 +105,7 @@ public class MovieClip {
 	
 	public static void main(String[] args) {
 		
-		MovieClip c1 = MovieClip.parseString("3:79:88 Avengeres    ");
+		MovieClip c1 = MovieClip.parseString("      3:79:88 Avengeres    ");
 		System.out.println(c1);
 	}
 }
