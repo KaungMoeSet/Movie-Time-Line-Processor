@@ -51,5 +51,12 @@ public class Movie {
 		return sb.toString();
 	}
 	
-	
+	public static void main(String[] args) {
+		MovieClip clip1 = MovieClip.parseString("0:20:50 first movie");
+		MovieClip clip2 = MovieClip.parseString("3:20:80 first movie");
+		MovieClip clip3 = MovieClip.parseString("1:35:10 first movie");
+		Movie movie = new Movie("Joined Movie clips", TimeStampSpecifier.DURATION);
+		movie.addMovieClip(clip1).addMovieClip(clip2).addMovieClip(clip3);
+		System.out.println(movie);
+	}
 }
